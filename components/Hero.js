@@ -190,12 +190,12 @@ export default function Hero({ onSeeMore }) {
       <button
         onClick={onSeeMore}
         className="absolute bottom-8 right-8 flex items-center gap-3 cursor-pointer
-                   text-[11px] font-black uppercase tracking-[0.22em] text-[#1a1a1a]/55
+                   text-[13px] font-black uppercase tracking-[0.22em] text-[#1a1a1a]/55
                    hover:text-[#1a1a1a] transition-colors duration-100"
       >
         <span>See More</span>
-        <span className="w-8 h-8 rounded-full border border-current
-                          flex items-center justify-center text-base leading-none">
+        <span className="w-10 h-10 rounded-full border border-current
+                          flex items-center justify-center text-lg leading-none">
           ↓
         </span>
       </button>
