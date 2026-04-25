@@ -20,30 +20,24 @@ export default function Hero({ onSeeMore }) {
 
         {/* ── LEFT COLUMN ─────────────────────────────────── */}
         <div className="rounded-4xl border border-[#1a1a1a]/20 bg-white
-                        flex flex-col justify-between p-8 md:p-10 overflow-hidden relative">
+                        flex flex-col p-8 md:p-10 overflow-hidden">
 
           <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#1a1a1a]/25">
             Portfolio / 2026
           </p>
 
-          {/* Arrow — scaled down, stem raised to merge cleanly with arrowhead */}
-          <div className="absolute top-[44%] right-6 -translate-y-full pointer-events-none">
+          {/* Arrow — pushed to bottom-right, just above the hashtags */}
+          <div className="flex-1 flex items-end justify-end pb-3 pointer-events-none">
             <svg
-              width="155"
-              height="155"
-              viewBox="0 0 140 140"
+              viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+              className="w-48 h-48 text-black"
             >
-              {/* Single path: stem + arrowhead share the corner point at (122,122) */}
-              <path
-                d="M 8 8 L 122 122 M 62 122 L 122 122 L 122 62"
-                stroke="#1a1a1a"
-                strokeWidth="20"
-                strokeLinecap="square"
-                strokeLinejoin="miter"
-                fill="none"
-              />
+              <path d="M5 5l14 14M10 19h9v-9" />
             </svg>
           </div>
 
@@ -53,7 +47,7 @@ export default function Hero({ onSeeMore }) {
               <li key={tag} className="w-full text-right border-b border-[#1a1a1a]/20 py-2.5">
                 <span className="text-[16px] font-bold text-[#1a1a1a]">#</span>
                 <span className="text-[16px] font-light text-[#1a1a1a] tracking-tight">
-                  dark{tag}
+                  {tag}
                 </span>
               </li>
             ))}
@@ -108,6 +102,14 @@ export default function Hero({ onSeeMore }) {
             <rect x="6" y="6" width="78" height="78" stroke="white" strokeWidth="12" fill="none" />
           </svg>
 
+          {/* Large hollow circle — fills the empty top-left corner */}
+          <svg
+            className="absolute top-8 left-8 opacity-[0.15] pointer-events-none"
+            width="180" height="180" viewBox="0 0 180 180" fill="none"
+          >
+            <circle cx="90" cy="90" r="78" stroke="white" strokeWidth="18" />
+          </svg>
+
           {/* Availability badge — top-right, above decorations */}
           <div className="relative z-10 flex items-start justify-end">
             <span className="rounded-full text-[10px] font-black uppercase tracking-widest
@@ -140,8 +142,8 @@ export default function Hero({ onSeeMore }) {
             ))}
           </div>
 
-          {/* 2026 — bottom-left, z-10 floats above everything */}
-          <div className="relative z-10">
+          {/* 2026 + thick dash — pinned bottom-left */}
+          <div className="absolute bottom-8 left-8 z-10 flex items-end gap-4">
             <span
               className="font-black text-white leading-none"
               style={{
@@ -152,6 +154,7 @@ export default function Hero({ onSeeMore }) {
             >
               2026
             </span>
+            <div className="h-5 w-50 bg-white opacity-90 mb-4" />
           </div>
         </div>
 

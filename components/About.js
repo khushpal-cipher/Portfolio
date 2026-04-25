@@ -40,7 +40,7 @@ export default function About() {
     <section id="about" className="py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-        {/* LEFT 1/3 — dark card */}
+        {/* LEFT — dark card */}
         <div className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
                         flex flex-col justify-between p-8 min-h-80">
           <div>
@@ -70,24 +70,31 @@ export default function About() {
         {/* RIGHT 2/3 — stacked */}
         <div className="lg:col-span-2 flex flex-col gap-4">
 
-          {/* Introduction card */}
+          {/* Introduction card — text + portrait side-by-side */}
           <div className="rounded-4xl border border-[#1a1a1a]/20 bg-white p-8">
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a1a1a]/30 mb-4">
               Introduction
             </p>
-            <p
-              className="font-black text-[#1a1a1a] leading-[1.05] tracking-tight"
-              style={{ fontSize: "clamp(19px, 2.5vw, 34px)" }}
-            >
-              I don&apos;t have a job title yet — but I do have a crash
-              detection system that identifies rear-end collisions at
-              99.98% confidence, running at 13 fps on a CPU.
-            </p>
+            <div className="flex gap-6 items-start">
+              <p
+                className="font-black text-[#1a1a1a] leading-[1.05] tracking-tight flex-1"
+                style={{ fontSize: "clamp(19px, 2.5vw, 34px)" }}
+              >
+                I don&apos;t have a job title yet — but I do have a crash
+                detection system that identifies rear-end collisions at
+                99.98% confidence, running at 13 fps on a CPU.
+              </p>
+              <img
+                src="/portrait.png"
+                alt="Person Portrait"
+                className="w-[30%] h-auto object-cover rounded-3xl shrink-0"
+              />
+            </div>
           </div>
 
           {/* Get In Touch */}
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a1a1a]/30 mb-2 px-1">
+            <p className="text-[42px] font-black uppercase tracking-tight text-[#1a1a1a] leading-none mb-3 px-1">
               Get In Touch
             </p>
 
@@ -97,10 +104,17 @@ export default function About() {
               <a
                 href="mailto:khushpal141@gmail.com"
                 className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
-                           flex flex-col justify-between p-5 aspect-square group"
+                           flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
               >
-                <MailIcon className="w-6 h-6 text-white" />
-                <div>
+                {/* Faded envelope background */}
+                <svg
+                  className="absolute inset-0 w-full h-full p-6 text-white/10 pointer-events-none"
+                  viewBox="0 0 24 24" fill="currentColor"
+                >
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <MailIcon className="w-6 h-6 text-white relative z-10" />
+                <div className="relative z-10">
                   <div className="border-t border-white/20 mb-3" />
                   <p className="text-[11px] font-bold text-white/60 leading-snug break-all
                                 group-hover:text-white transition-colors duration-100">
@@ -115,10 +129,16 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-4xl border border-[#1a1aff] bg-[#1a1aff]
-                           flex flex-col justify-between p-5 aspect-square group"
+                           flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
               >
-                <LinkedInIcon className="w-6 h-6 text-white" />
-                <div>
+                {/* Faded 'in' LinkedIn watermark */}
+                <span className="absolute inset-0 flex items-center justify-center
+                                 text-[110px] font-black text-white/10 leading-none
+                                 select-none pointer-events-none">
+                  in
+                </span>
+                <LinkedInIcon className="w-6 h-6 text-white relative z-10" />
+                <div className="relative z-10">
                   <div className="border-t border-white/20 mb-3" />
                   <p className="text-[11px] font-bold text-white/60 leading-snug
                                 group-hover:text-white transition-colors duration-100">
@@ -133,10 +153,17 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-4xl border border-[#1a1a1a]/20 bg-white
-                           flex flex-col justify-between p-5 aspect-square group"
+                           flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
               >
-                <GitHubIcon className="w-6 h-6 text-[#1a1a1a]" />
-                <div>
+                {/* Faded Octocat background */}
+                <svg
+                  className="absolute inset-0 w-full h-full p-4 text-[#1a1a1a]/10 pointer-events-none"
+                  viewBox="0 0 24 24" fill="currentColor"
+                >
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <GitHubIcon className="w-6 h-6 text-[#1a1a1a] relative z-10" />
+                <div className="relative z-10">
                   <div className="border-t border-[#1a1a1a]/15 mb-3" />
                   <p className="text-[11px] font-bold text-[#1a1a1a]/50 leading-snug
                                 group-hover:text-[#1a1a1a] transition-colors duration-100">
