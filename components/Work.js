@@ -1,48 +1,36 @@
 "use client";
 import { useState } from "react";
 
+/* ── data ── */
 const projects = [
   {
     id: "01",
     title: "Crash Detection System",
-    description:
-      "Real-time crash detection pipeline. MobileNetV2 extracts features, LSTM reads sequences across 10 frames. 99.98% crash confidence on real dashcam footage.",
+    desc:  "Real-time crash detection pipeline. MobileNetV2 extracts features, LSTM reads sequences across 10 frames. 99.98% crash confidence on real dashcam footage.",
     category: ["ML/AI"],
-    tech: ["Python", "TensorFlow", "YOLOv8", "OpenCV", "LSTM"],
-    github: "https://github.com/khushpal-cipher/crash-detection-system",
+    tech:     ["Python", "TensorFlow", "YOLOv8", "OpenCV", "LSTM"],
+    github:   "https://github.com/khushpal-cipher/crash-detection-system",
     featured: true,
   },
   {
     id: "02",
     title: "AI Credit Risk Evaluator",
-    description:
-      "Ingests financial CSV data, scores corporate credit risk 0–100 using weighted signals, generates explainable reports. Built at Alta School of Technology hackathon.",
+    desc:  "Ingests financial CSV data, scores corporate credit risk 0–100 using weighted signals, generates explainable reports. Built at Alta School hackathon.",
     category: ["Full-Stack", "ML/AI"],
-    tech: ["React", "FastAPI", "Python", "OpenRouter"],
-    github: "https://github.com/khushpal-cipher/AltaHackathon_backend",
+    tech:     ["React", "FastAPI", "Python", "OpenRouter"],
+    github:   "https://github.com/khushpal-cipher/AltaHackathon_backend",
   },
   {
     id: "03",
-    title: "Drum Stick",
-    description:
-      "Browser-based drum machine built with vanilla JS. Deployed and live on Vercel.",
+    title: "Weather App",
+    desc:  "Browser-based weather application that fetches and displays real-time conditions using a public weather API. Built with vanilla JavaScript.",
     category: ["Frontend"],
-    tech: ["JavaScript", "HTML", "CSS"],
-    github: "https://github.com/khushpal-cipher/drum-stick",
-    live: "https://drum-stick-chi.vercel.app",
-  },
-  {
-    id: "04",
-    title: "Portfolio v1",
-    description:
-      "First portfolio site, hand-built from scratch with no frameworks. The one that started it all.",
-    category: ["Frontend"],
-    tech: ["JavaScript", "HTML", "CSS"],
-    github: "https://github.com/khushpal-cipher/Project",
+    tech:     ["JavaScript", "HTML", "CSS", "API"],
+    github:   "https://github.com/khushpal-cipher/Project",
   },
 ];
 
-const filters = ["All", "ML/AI", "Full-Stack", "Frontend"];
+const FILTERS = ["All", "ML/AI", "Full-Stack", "Frontend"];
 
 export default function Work() {
   const [active, setActive] = useState("All");
@@ -53,34 +41,30 @@ export default function Work() {
       : projects.filter((p) => p.category.includes(active));
 
   return (
-    <section id="work" className="py-20 px-6 md:px-12">
+    <section id="work" className="py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div
-          className="flex flex-col md:flex-row md:items-baseline justify-between gap-4 mb-10 pb-4"
-          style={{ borderBottom: "1.5px solid var(--border)" }}
-        >
+        {/* Header + filters */}
+        <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-3 mb-4 pb-3 border-b border-[#1a1a1a]/15">
           <h2
-            className="font-black"
-            style={{
-              fontSize: "clamp(32px, 4vw, 52px)",
-              letterSpacing: "-0.02em",
-              color: "var(--text-primary)",
-            }}
+            className="font-black text-[#1a1a1a] tracking-tight"
+            style={{ fontSize: "clamp(26px, 3.8vw, 46px)" }}
           >
             Work{" "}
-            <span style={{ color: "var(--text-muted)", fontWeight: 300 }}>
-              / Projects
-            </span>
+            <span className="font-light text-[#1a1a1a]/35">/ Projects</span>
           </h2>
 
           <div className="flex gap-2 flex-wrap">
-            {filters.map((f) => (
+            {FILTERS.map((f) => (
               <button
                 key={f}
                 onClick={() => setActive(f)}
-                className={`pill cursor-pointer ${active === f ? "pill-accent" : ""}`}
+                className={`cursor-pointer rounded-full px-4 py-1.5 text-[10px] font-black uppercase
+                            tracking-widest border transition-colors duration-100
+                  ${active === f
+                    ? "bg-[#1a1aff] text-white border-[#1a1aff]"
+                    : "bg-transparent text-[#1a1a1a]/50 border-[#1a1a1a]/25 hover:bg-[#1a1aff] hover:text-white hover:border-[#1a1aff]"
+                  }`}
               >
                 {f}
               </button>
@@ -88,106 +72,91 @@ export default function Work() {
           </div>
         </div>
 
-        {/* Project list */}
-        <div className="flex flex-col">
-          {filtered.map((project) => (
-            <ProjectRow key={project.id} project={project} />
+        {/* ── Table of Contents list ── */}
+        <ol className="flex flex-col">
+          {filtered.map((p, idx) => (
+            <li
+              key={p.id}
+              className="group flex gap-6 py-7 border-b border-[#1a1a1a]/10 last:border-b-0"
+            >
+              {/* Large number */}
+              <span
+                className="font-black text-[#1a1a1a]/15 leading-none shrink-0 select-none
+                           group-hover:text-[#1a1aff] transition-colors duration-150"
+                style={{ fontSize: "clamp(36px, 4.5vw, 60px)", lineHeight: 1.05 }}
+              >
+                {idx + 1}.
+              </span>
+
+              {/* Content */}
+              <div className="flex flex-col gap-3 pt-1 flex-1">
+
+                {/* Title — underlined, links to GitHub */}
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-black text-[#1a1a1a] underline underline-offset-4 decoration-[#1a1a1a]/25
+                               hover:text-[#1a1aff] hover:decoration-[#1a1aff] transition-colors duration-100"
+                    style={{ fontSize: "clamp(17px, 2vw, 26px)" }}
+                  >
+                    {p.title}
+                  </a>
+                  {p.featured && (
+                    <span className="inline-flex items-center rounded-full bg-[#1a1aff] text-white
+                                     text-[10px] font-bold uppercase tracking-wide px-3 py-1">
+                      Featured
+                    </span>
+                  )}
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-[#1a1a1a]/50 leading-relaxed max-w-2xl">
+                  {p.desc}
+                </p>
+
+                {/* Tech stack pills — solid blue as specified */}
+                <div className="flex flex-wrap gap-2">
+                  {p.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="inline-flex items-center rounded-full bg-[#1a1aff] text-white
+                                 text-[10px] font-bold uppercase tracking-wide px-4 py-1"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                  {p.category.map((c) => (
+                    <span
+                      key={c}
+                      className="inline-flex items-center rounded-full bg-transparent text-[#1a1a1a]
+                                 border border-[#1a1a1a]/25 text-[10px] font-bold uppercase
+                                 tracking-wide px-4 py-1"
+                    >
+                      {c}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+
+              {/* GitHub link — right-aligned */}
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex shrink-0 self-start pt-2
+                           text-[11px] font-black uppercase tracking-wider
+                           text-[#1a1a1a]/30 hover:text-[#1a1aff] transition-colors duration-100"
+              >
+                GitHub ↗
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
 
       </div>
     </section>
-  );
-}
-
-function ProjectRow({ project }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div
-      className="relative flex flex-col md:flex-row md:items-start gap-4 py-6 transition-all duration-150 cursor-default"
-      style={{
-        borderBottom: "1.5px solid var(--border)",
-        background: hovered ? "var(--bg-base)" : "transparent",
-        paddingLeft: hovered ? "16px" : "0px",
-        paddingRight: "12px",
-        borderLeft: hovered ? `4px solid var(--accent)` : "4px solid transparent",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Index number */}
-      <span
-        className="font-black leading-none transition-colors duration-150 min-w-[64px]"
-        style={{
-          fontSize: "clamp(36px, 4vw, 52px)",
-          color: hovered ? "var(--accent)" : "#E0E0E0",
-        }}
-      >
-        {project.id}
-      </span>
-
-      {/* Content */}
-      <div className="flex-1 flex flex-col gap-2">
-        <div className="flex flex-wrap items-center gap-2">
-          <h3
-            className="font-bold"
-            style={{
-              fontSize: "clamp(18px, 2vw, 24px)",
-              color: "var(--text-primary)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {project.title}
-          </h3>
-          {project.featured && (
-            <span className="pill pill-accent" style={{ fontSize: 10 }}>
-              Featured
-            </span>
-          )}
-        </div>
-
-        <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2 mt-1">
-          {project.tech.map((t) => (
-            <span key={t} className="pill">{t}</span>
-          ))}
-          {project.category.map((c) => (
-            <span key={c} className="pill pill-outline">{c}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Links */}
-      <div className="flex gap-5 md:ml-4 items-start pt-1 shrink-0">
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium transition-colors duration-150"
-          style={{ color: "var(--text-muted)" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
-        >
-          GitHub ↗
-        </a>
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium transition-colors duration-150"
-            style={{ color: "var(--text-muted)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
-          >
-            Live ↗
-          </a>
-        )}
-      </div>
-    </div>
   );
 }

@@ -1,21 +1,23 @@
+/* ── Resume — 3-column editorial bento ── */
+
 const experiences = [
   {
     title: "Hackathon Participant",
-    org: "Alta School of Technology",
-    date: "April 2026",
-    desc: "Built an AI credit risk evaluation system in a team. Scored corporate credit 0–100 using weighted financial, compliance, and cash-flow signals.",
-    pills: ["Hackathon", "Full-Stack", "AI"],
+    org:   "Alta School of Technology",
+    date:  "April 2026",
+    desc:  "Built an AI credit risk evaluation system in a team. Scored corporate credit 0–100 using weighted financial, compliance, and cash-flow signals.",
+    tags:  ["Hackathon", "Full-Stack", "AI"],
   },
   {
     title: "Independent Builder",
-    org: "Personal Project",
-    date: "2025 – 2026",
-    desc: "Engineered a real-time crash detection pipeline from scratch using computer vision and deep learning. Runs at 13 fps on CPU.",
-    pills: ["ML / CV", "Python", "Solo"],
+    org:   "Personal Project",
+    date:  "2025 – 2026",
+    desc:  "Engineered a real-time crash detection pipeline from scratch using computer vision and deep learning. Runs at 13 fps on CPU.",
+    tags:  ["ML / CV", "Python", "Solo"],
   },
 ];
 
-const hardSkills = ["Python", "JavaScript", "React", "FastAPI", "TensorFlow", "Java", "HTML", "CSS"];
+const technical  = ["Python", "JavaScript", "React", "FastAPI", "TensorFlow", "Java", "HTML", "CSS"];
 const aiSkills   = ["Computer Vision", "Deep Learning", "LSTM", "YOLOv8", "MobileNetV2", "OpenCV", "Keras"];
 const tools      = ["Git", "Google Colab", "Vercel", "VS Code"];
 const softSkills = [
@@ -26,201 +28,153 @@ const softSkills = [
 ];
 const coursework = ["Machine Learning", "Data Structures", "Computer Vision", "Algorithms", "Neural Networks"];
 
-function SectionLabel({ children }) {
+const LB = "text-[10px] font-bold uppercase tracking-[0.18em] text-[#1a1a1a]/40";
+const SL = "text-[11px] font-bold uppercase tracking-[0.14em] text-[#1a1a1a]";
+const C  = "rounded-4xl border border-[#1a1a1a]/20 bg-white";
+
+function BluePill({ children }) {
   return (
-    <span
-      className="text-xs font-medium uppercase tracking-[0.12em]"
-      style={{ color: "var(--text-muted)" }}
-    >
+    <span className="inline-flex items-center rounded-full bg-[#1a1aff] text-white
+                     text-[10px] font-bold uppercase tracking-wide px-3 py-1 whitespace-nowrap">
       {children}
     </span>
   );
 }
 
-function SubLabel({ children }) {
+function GhostPill({ children }) {
   return (
-    <span
-      className="text-xs font-bold uppercase tracking-[0.1em]"
-      style={{ color: "var(--text-primary)" }}
-    >
+    <span className="inline-flex items-center rounded-full bg-transparent text-[#1a1a1a]
+                     border border-[#1a1a1a]/25 text-[10px] font-bold uppercase tracking-wide
+                     px-3 py-1 whitespace-nowrap">
       {children}
     </span>
   );
 }
 
-function PillRow({ items }) {
+function DatePill({ children }) {
   return (
-    <div className="flex flex-wrap gap-2">
-      {items.map((s) => (
-        <span key={s} className="pill">{s}</span>
-      ))}
-    </div>
+    <span className="inline-flex items-center rounded-full bg-[#1a1a1a]/6 text-[#1a1a1a]/60
+                     border border-[#1a1a1a]/12 text-[10px] font-bold uppercase tracking-wide
+                     px-3 py-1 whitespace-nowrap">
+      {children}
+    </span>
   );
 }
 
 export default function Resume() {
   return (
-    <section id="resume" className="py-20 px-6 md:px-12">
+    <section id="resume" className="py-6 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Section header */}
-        <div
-          className="flex items-baseline gap-4 mb-10 pb-4"
-          style={{ borderBottom: "1.5px solid var(--border)" }}
-        >
+        <div className="flex items-baseline gap-3 mb-4 pb-3 border-b border-[#1a1a1a]/15">
           <h2
-            className="font-black"
-            style={{
-              fontSize: "clamp(32px, 4vw, 52px)",
-              letterSpacing: "-0.02em",
-              color: "var(--text-primary)",
-            }}
+            className="font-black text-[#1a1a1a] tracking-tight"
+            style={{ fontSize: "clamp(26px, 3.8vw, 46px)" }}
           >
             Resume
           </h2>
-          <span
-            className="text-sm uppercase tracking-widest"
-            style={{ color: "var(--text-muted)" }}
-          >
-            / Experience &amp; Skills
-          </span>
+          <span className={LB}>/ Experience &amp; Skills</span>
         </div>
 
-        {/* 3-column bento */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {/* 3-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
           {/* ── LEFT: Experience ── */}
-          <div className="flex flex-col gap-3">
-            <div className="bento-card">
-              <SectionLabel>Experience</SectionLabel>
+          <div className="flex flex-col gap-4">
+            <div className={`${C} p-5`}>
+              <span className={LB}>Experience</span>
             </div>
 
             {experiences.map((exp, i) => (
-              <div key={i} className="bento-card relative">
-                {/* Timeline line */}
-                <div
-                  className="absolute left-8 top-0 bottom-0 w-[1.5px]"
-                  style={{ background: "var(--border)", opacity: 0.2 }}
-                />
-                {/* Dot */}
-                <span
-                  className="absolute left-[26px] top-8 w-3 h-3 rounded-full"
-                  style={{ background: "var(--text-primary)", zIndex: 1 }}
-                />
+              <div key={i} className={`${C} p-6 flex flex-col gap-4`}>
+                {/* Pill row — date + org */}
+                <div className="flex flex-wrap gap-2">
+                  <DatePill>{exp.date}</DatePill>
+                  <DatePill>{exp.org}</DatePill>
+                </div>
 
-                <div className="pl-8">
-                  <div
-                    className="text-xs mb-1"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    {exp.date}
-                  </div>
-                  <div
-                    className="font-bold mb-0.5"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {exp.title}
-                  </div>
-                  <div
-                    className="text-sm mb-3"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    {exp.org}
-                  </div>
-                  <p
-                    className="text-sm mb-4 leading-relaxed"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {exp.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.pills.map((p) => (
-                      <span key={p} className="pill">{p}</span>
-                    ))}
-                  </div>
+                <div>
+                  <p className="font-black text-[#1a1a1a] text-sm mb-2">{exp.title}</p>
+                  <p className="text-sm text-[#1a1a1a]/55 leading-relaxed">{exp.desc}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {exp.tags.map((t) => <BluePill key={t}>{t}</BluePill>)}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* ── MIDDLE: Skills ── */}
-          <div className="flex flex-col gap-3">
-            <div className="bento-card">
-              <SectionLabel>Expertise</SectionLabel>
+          {/* ── MIDDLE: Expertise ── */}
+          <div className="flex flex-col gap-4">
+            <div className={`${C} p-5`}>
+              <span className={LB}>Expertise</span>
             </div>
 
-            <div className="bento-card flex flex-col gap-3">
-              <SubLabel>Technical</SubLabel>
-              <PillRow items={hardSkills} />
+            <div className={`${C} p-5 flex flex-col gap-3`}>
+              <span className={SL}>Technical</span>
+              <div className="flex flex-wrap gap-1.5">
+                {technical.map((s) => <GhostPill key={s}>{s}</GhostPill>)}
+              </div>
             </div>
 
-            <div className="bento-card flex flex-col gap-3">
-              <SubLabel>AI &amp; ML</SubLabel>
-              <PillRow items={aiSkills} />
+            <div className={`${C} p-5 flex flex-col gap-3`}>
+              <span className={SL}>AI &amp; ML</span>
+              <div className="flex flex-wrap gap-1.5">
+                {aiSkills.map((s) => <GhostPill key={s}>{s}</GhostPill>)}
+              </div>
             </div>
 
-            <div className="bento-card flex flex-col gap-3">
-              <SubLabel>Tools</SubLabel>
-              <PillRow items={tools} />
+            <div className={`${C} p-5 flex flex-col gap-3`}>
+              <span className={SL}>Tools</span>
+              <div className="flex flex-wrap gap-1.5">
+                {tools.map((s) => <GhostPill key={s}>{s}</GhostPill>)}
+              </div>
             </div>
 
-            <div className="bento-card flex flex-col gap-3">
-              <SubLabel>How I Work</SubLabel>
+            <div className={`${C} p-5 flex flex-col gap-3`}>
+              <span className={SL}>How I Work</span>
               <ul className="flex flex-col gap-2">
                 {softSkills.map((s) => (
-                  <li
-                    key={s}
-                    className="text-sm"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    — {s}
-                  </li>
+                  <li key={s} className="text-sm text-[#1a1a1a]/55">— {s}</li>
                 ))}
               </ul>
             </div>
           </div>
 
           {/* ── RIGHT: Education ── */}
-          <div className="flex flex-col gap-3">
-            <div className="bento-card">
-              <SectionLabel>Education</SectionLabel>
+          <div className="flex flex-col gap-4">
+            <div className={`${C} p-5`}>
+              <span className={LB}>Education</span>
             </div>
 
-            <div className="bento-card flex flex-col gap-4">
+            <div className={`${C} p-6 flex flex-col gap-4`}>
+              {/* Degree pills */}
+              <div className="flex flex-wrap gap-2">
+                <BluePill>Pursuing · 1st Year</BluePill>
+                <DatePill>2025 — Present</DatePill>
+              </div>
+
               <div>
-                <div
-                  className="text-xl font-bold leading-snug mb-1"
-                  style={{ color: "var(--text-primary)" }}
-                >
+                <p className="text-lg font-black text-[#1a1a1a] leading-snug mb-1">
                   B.Tech — Computer Science (AI)
-                </div>
-                <div className="text-sm mb-0.5" style={{ color: "var(--text-muted)" }}>
-                  Ajeenkya DY Patil University
-                </div>
-                <div className="text-sm mb-4" style={{ color: "var(--text-muted)" }}>
-                  Pune &nbsp;·&nbsp; 2025 — Present
-                </div>
-                <span className="pill pill-accent">Pursuing · 1st Year</span>
+                </p>
+                <p className="text-sm text-[#1a1a1a]/50">Ajeenkya DY Patil University</p>
+                <p className="text-sm text-[#1a1a1a]/50">Pune, India</p>
               </div>
 
-              <div
-                className="pt-4 flex flex-col gap-3"
-                style={{ borderTop: "1.5px solid var(--border)" }}
-              >
-                <SubLabel>Relevant Coursework</SubLabel>
-                <PillRow items={coursework} />
+              <div className="pt-3 border-t border-[#1a1a1a]/10 flex flex-col gap-3">
+                <span className={SL}>Relevant Coursework</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {coursework.map((c) => <GhostPill key={c}>{c}</GhostPill>)}
+                </div>
               </div>
             </div>
 
-            {/* Quote card */}
-            <div
-              className="bento-card"
-              style={{ background: "var(--bg-base)" }}
-            >
-              <p
-                className="text-base font-semibold italic leading-snug"
-                style={{ color: "var(--text-primary)" }}
-              >
+            {/* Quote */}
+            <div className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a] p-6">
+              <p className="text-base font-black italic leading-snug text-white">
                 &ldquo;Building things outside the curriculum since year one.&rdquo;
               </p>
             </div>

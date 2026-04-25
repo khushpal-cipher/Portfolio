@@ -1,19 +1,5 @@
-import Nav from "@/components/Nav";
-import About from "@/components/About";
-import Resume from "@/components/Resume";
-import Work from "@/components/Work";
-import Footer from "@/components/Footer";
+import PageController from "@/components/PageController";
 
 export default function Home() {
-  return (
-    <>
-      <Nav />
-      <main className="pt-16">
-        <About />
-        <Resume />
-        <Work />
-        <Footer />
-      </main>
-    </>
-  );
+  return <PageController />;
 }
