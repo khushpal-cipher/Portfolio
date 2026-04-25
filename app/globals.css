@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --bg-base: #F4F4F0;
+  --bg-card: #FFFFFF;
+  --border: #1A1A1A;
+  --text-primary: #0D0D0D;
+  --text-muted: #6B6B6B;
+  --accent: #0052FF;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* ── Card ── */
+.bento-card {
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-card);
+  padding: 24px;
+  transition: border-color 100ms ease;
+}
+
+.bento-card:hover {
+  border-color: #000;
+}
+
+.bento-card-dark {
+  background: #0D0D0D;
+  color: #fff;
+  border-color: #0D0D0D;
+}
+
+.bento-card-dark:hover {
+  border-color: #333;
+}
+
+/* ── Pills ── */
+.pill {
+  background: #1A1A1A;
+  color: #fff;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  transition: background 120ms ease, color 120ms ease;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  background: var(--accent);
+}
+
+.pill-accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.pill-accent:hover {
+  background: #0D0D0D;
+}
+
+.pill-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--border);
+}
+
+.pill-outline:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── Fade-in entry ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 300ms ease forwards;
+}
