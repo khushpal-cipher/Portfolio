@@ -110,6 +110,32 @@ export default function Hero({ onSeeMore }) {
             <circle cx="90" cy="90" r="78" stroke="white" strokeWidth="18" />
           </svg>
 
+          {/* Rotated hollow square (diamond) — top-center void */}
+          <svg
+            className="absolute top-12 left-[38%] opacity-[0.10] pointer-events-none"
+            style={{ transform: "rotate(45deg)" }}
+            width="110" height="110" viewBox="0 0 110 110" fill="none"
+          >
+            <rect x="8" y="8" width="94" height="94" stroke="white" strokeWidth="13" fill="none" />
+          </svg>
+
+          {/* Small hollow circle — upper-center-right gap filler */}
+          <svg
+            className="absolute top-[14%] left-[52%] opacity-[0.11] pointer-events-none"
+            width="70" height="70" viewBox="0 0 70 70" fill="none"
+          >
+            <circle cx="35" cy="35" r="28" stroke="white" strokeWidth="11" />
+          </svg>
+
+          {/* Tiny hollow square — plugs the remaining upper-right interior gap */}
+          <svg
+            className="absolute top-6 left-[62%] opacity-[0.09] pointer-events-none"
+            style={{ transform: "rotate(18deg)" }}
+            width="52" height="52" viewBox="0 0 52 52" fill="none"
+          >
+            <rect x="5" y="5" width="42" height="42" stroke="white" strokeWidth="9" fill="none" />
+          </svg>
+
           {/* Availability badge — top-right, above decorations */}
           <div className="relative z-10 flex items-start justify-end">
             <span className="rounded-full text-[10px] font-black uppercase tracking-widest

@@ -42,28 +42,40 @@ export default function About() {
 
         {/* LEFT — dark card */}
         <div className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
-                        flex flex-col justify-between p-8 min-h-80">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/30 mb-6">
-              Hello, My name is
-            </p>
-            <h2
-              className="font-black text-white leading-[0.92] tracking-tight"
-              style={{ fontSize: "clamp(26px, 3.2vw, 44px)" }}
-            >
-              Khushpal<br />Singh<br />Chouhan.
-            </h2>
-          </div>
+                        relative overflow-hidden flex flex-col justify-between min-h-125">
+          {/* Background portrait */}
+          <img
+            src="/portrait.png"
+            alt="Portrait"
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
+          />
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-transparent to-black/90 z-10"></div>
 
-          <div className="flex flex-col gap-4 mt-6">
-            <p className="text-sm text-white/50 leading-relaxed">
-              CS undergrad at Ajeenkya DY Patil University, Pune — specialising in AI.
-              I build computer vision pipelines, AI-backed APIs, and full-stack apps.
-            </p>
-            <p className="text-sm text-white/50 leading-relaxed">
-              Looking for an internship where I can stop building alone.
-            </p>
-            <span className="pill self-start">Open to Intern</span>
+          {/* Foreground content */}
+          <div className="relative z-20 flex flex-col justify-between h-full p-8">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 mb-6">
+                Hello, My name is
+              </p>
+              <h2
+                className="font-black text-white leading-[0.92] tracking-tight"
+                style={{ fontSize: "clamp(26px, 3.2vw, 44px)" }}
+              >
+                KHUSHPAL<br />SINGH<br />CHOUHAN.
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-4 mt-6">
+              <p className="text-sm text-white/70 leading-relaxed">
+                CS undergrad at Ajeenkya DY Patil University, Pune — specialising in AI.
+                I build computer vision pipelines, AI-backed APIs, and full-stack apps.
+              </p>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Looking for an internship where I can stop building alone.
+              </p>
+              <span className="pill self-start">Open to Intern</span>
+            </div>
           </div>
         </div>
 
@@ -85,7 +97,7 @@ export default function About() {
                 99.98% confidence, running at 13 fps on a CPU.
               </p>
               <img
-                src="/portrait.png"
+                src="/avatar.png"
                 alt="Person Portrait"
                 className="w-[30%] h-auto object-cover rounded-3xl shrink-0"
               />
