@@ -7,24 +7,15 @@ const LINKS = [
   { id: "work",   label: "Work"     },
 ];
 
-/* activeView and setView come from PageController */
+/* KSC logo and Hire Me are globally fixed in PageController — Nav holds only section links */
 export default function Nav({ activeView, setView }) {
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 bg-[#F5F5F0] border-b border-[#1a1a1a]/20">
-      <div className="max-w-7xl mx-auto h-14 flex items-center justify-between px-5 md:px-8">
+      <div className="max-w-7xl mx-auto h-14 flex items-center justify-center px-5 md:px-8">
 
-        {/* Logo — clicking returns to hero */}
-        <button
-          onClick={() => setView("home")}
-          className="text-sm font-black tracking-tight text-[#1a1a1a] uppercase
-                     hover:text-[#1a1aff] transition-colors duration-100 cursor-pointer"
-        >
-          KSC
-        </button>
-
-        {/* Desktop tab links */}
+        {/* Desktop center links */}
         <div className="hidden md:flex items-center gap-8">
           {LINKS.map(({ id, label }) => (
             <button
@@ -42,19 +33,9 @@ export default function Nav({ activeView, setView }) {
           ))}
         </div>
 
-        {/* Hire Me CTA */}
-        <a
-          href="mailto:khushpal141@gmail.com"
-          className="hidden md:inline-flex items-center gap-1 px-4 py-1.5 rounded-full
-                     text-[11px] font-black uppercase tracking-wider
-                     bg-[#1a1a1a] text-white hover:bg-[#1a1aff] transition-colors duration-100"
-        >
-          Hire Me →
-        </a>
-
         {/* Mobile hamburger */}
         <button
-          className="md:hidden font-black text-[#1a1a1a] w-8 h-8 flex items-center justify-center"
+          className="md:hidden font-black text-[#1a1a1a] w-8 h-8 flex items-center justify-center ml-auto"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -75,13 +56,6 @@ export default function Nav({ activeView, setView }) {
               {label}
             </button>
           ))}
-          <a
-            href="mailto:khushpal141@gmail.com"
-            onClick={() => setOpen(false)}
-            className="text-xl font-black text-[#1a1aff] uppercase tracking-wider"
-          >
-            Hire Me →
-          </a>
         </div>
       )}
     </nav>
