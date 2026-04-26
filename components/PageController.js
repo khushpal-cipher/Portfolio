@@ -1,26 +1,22 @@
 "use client";
-import { useState } from "react";
 import Hero   from "./Hero";
 import Nav    from "./Nav";
 import About  from "./About";
 import Resume from "./Resume";
 import Work   from "./Work";
-import Footer from "./Footer";
 
 export default function PageController() {
-  const [view, setView] = useState("home");
-
   return (
-    <>
-      {/* ── Global fixed corner elements — present in every view ── */}
-      <button
-        onClick={() => setView("home")}
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+      {/* ── Global fixed corner elements ── */}
+      <a
+        href="#home"
         className="fixed top-6 left-6 z-100
                    text-sm font-black tracking-tight text-[#1a1a1a] uppercase
-                   hover:text-[#1a1aff] transition-colors duration-100 cursor-pointer"
+                   hover:text-[#1a1aff] transition-colors duration-100"
       >
         KSC
-      </button>
+      </a>
       <a
         href="mailto:khushpal141@gmail.com"
         className="fixed top-6 right-6 z-100
@@ -31,22 +27,14 @@ export default function PageController() {
         Hire Me →
       </a>
 
-      {/* ── Views ── */}
-      {view === "home" && (
-        <Hero onSeeMore={() => setView("about")} />
-      )}
+      {/* ── Fixed nav bar ── */}
+      <Nav />
 
-      {view !== "home" && (
-        <div className="min-h-screen flex flex-col bg-[#F5F5F0]">
-          <Nav activeView={view} setView={setView} />
-          <main className="flex-1">
-            {view === "about"  && <About />}
-            {view === "resume" && <Resume />}
-            {view === "work"   && <Work />}
-          </main>
-          <Footer />
-        </div>
-      )}
-    </>
+      {/* ── Snap sections ── */}
+      <Hero />
+      <About />
+      <Resume />
+      <Work />
+    </div>
   );
 }

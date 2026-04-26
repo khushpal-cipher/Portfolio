@@ -37,12 +37,12 @@ function GitHubIcon({ className }) {
 /* ── main ── */
 export default function About() {
   return (
-    <section id="about" className="py-6 px-4 md:px-8">
+    <section id="about" className="min-h-screen snap-start snap-always w-full scroll-mt-14 py-6 px-4 md:px-8 pt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
 
         {/* LEFT — dark card */}
         <div className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
-                        relative overflow-hidden flex flex-col justify-between min-h-125">
+                        relative overflow-hidden flex flex-col justify-between min-h-175">
           {/* Background portrait */}
           <img
             src="/portrait.png"
@@ -83,7 +83,7 @@ export default function About() {
         <div className="lg:col-span-2 flex flex-col gap-4">
 
           {/* Introduction card — text + portrait side-by-side */}
-          <div className="rounded-4xl border border-[#1a1a1a]/20 bg-white p-8">
+          <div className="rounded-4xl border border-[#1a1a1a]/20 bg-white p-8 flex-1">
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a1a1a]/30 mb-4">
               Introduction
             </p>

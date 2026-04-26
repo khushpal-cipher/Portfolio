@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Footer from "./Footer";
 
 /* ── data ── */
 const projects = [
@@ -41,8 +42,8 @@ export default function Work() {
       : projects.filter((p) => p.category.includes(active));
 
   return (
-    <section id="work" className="py-6 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="work" className="min-h-screen snap-start snap-always w-full scroll-mt-14 py-6 px-4 md:px-8 pt-20 flex flex-col">
+      <div className="max-w-7xl mx-auto flex-1">
 
         {/* Header + filters */}
         <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-3 mb-4 pb-3 border-b border-[#1a1a1a]/15">
@@ -157,6 +158,7 @@ export default function Work() {
         </ol>
 
       </div>
+      <Footer />
     </section>
   );
 }

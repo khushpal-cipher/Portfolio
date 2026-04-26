@@ -11,9 +11,9 @@ const HASHTAGS = [
 const PORTFOLIO_ROWS = ["POR", "TFO", "LIO"];
 
 /* KSC and Hire Me are fixed globally in PageController — Hero owns only the bento layout */
-export default function Hero({ onSeeMore }) {
+export default function Hero() {
   return (
-    <section className="h-screen overflow-hidden relative bg-[#F5F5F0]">
+    <section id="home" className="h-screen snap-start snap-always w-full overflow-hidden relative bg-[#F5F5F0]">
 
       {/* pt-16 clears the globally-fixed KSC / Hire Me labels */}
       <div className="h-full px-4 md:px-6 pt-16 pb-20 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -187,9 +187,9 @@ export default function Hero({ onSeeMore }) {
       </div>
 
       {/* See More — anchored absolute bottom-right */}
-      <button
-        onClick={onSeeMore}
-        className="absolute bottom-8 right-8 flex items-center gap-3 cursor-pointer
+      <a
+        href="#about"
+        className="absolute bottom-8 right-8 flex items-center gap-3
                    text-[13px] font-black uppercase tracking-[0.22em] text-[#1a1a1a]/55
                    hover:text-[#1a1a1a] transition-colors duration-100"
       >
@@ -198,7 +198,7 @@ export default function Hero({ onSeeMore }) {
                           flex items-center justify-center text-lg leading-none">
           ↓
         </span>
-      </button>
+      </a>
 
     </section>
   );
