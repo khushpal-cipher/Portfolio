@@ -152,7 +152,7 @@ export default function Resume() {
             <div className={`${C} p-6 flex flex-col gap-4`}>
               {/* Degree pills */}
               <div className="flex flex-wrap gap-2">
-                <BluePill>Pursuing · 1st Year</BluePill>
+                <BluePill>Pursuing · 2nd Year</BluePill>
                 <DatePill>2025 — Present</DatePill>
               </div>
 

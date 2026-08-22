@@ -18,7 +18,7 @@ export default function PageController() {
         KSC
       </a>
       <a
-        href="mailto:khushpal141@gmail.com"
+        href="mailto:khushalsinghchouhan4@gmail.com"
         className="fixed top-6 right-6 z-100
                    inline-flex items-center gap-1 px-4 py-1.5 rounded-full
                    text-[11px] font-black uppercase tracking-wider

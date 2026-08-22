@@ -114,7 +114,7 @@ export default function About() {
 
               {/* Card 1 — Email (solid black) */}
               <a
-                href="mailto:khushpal141@gmail.com"
+                href="mailto:khushalsinghchouhan4@gmail.com"
                 className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
                            flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
               >
@@ -130,7 +130,7 @@ export default function About() {
                   <div className="border-t border-white/20 mb-3" />
                   <p className="text-[11px] font-bold text-white/60 leading-snug break-all
                                 group-hover:text-white transition-colors duration-100">
-                    khushpal141<br />@gmail.com
+                    khushalsinghchouhan4<br />@gmail.com
                   </p>
                 </div>
               </a>
