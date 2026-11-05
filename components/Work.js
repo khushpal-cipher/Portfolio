@@ -5,13 +5,45 @@ import Footer from "./Footer";
 /* ── data ── */
 const projects = [
   {
+    id: "00",
+    title: "ExamEdge AI",
+    desc:  "Multi-tenant AI learning platform for coaching institutes. Each institute gets a branded, database-isolated space with notes, a cited AI tutor, ranked tests and study material.",
+    category: ["Full-Stack", "ML/AI"],
+    tech:     ["TypeScript", "Next.js", "Supabase", "PostgreSQL"],
+    github:   "https://github.com/khushpal-cipher/ExamEdge_ai",
+    featured: true,
+  },
+  {
+    id: "00b",
+    title: "GeM Assistant",
+    desc:  "Chat assistant that finds and analyses Government e-Marketplace bid documents against a seller profile, showing page and exact-quote evidence for every value.",
+    category: ["Full-Stack", "ML/AI"],
+    tech:     ["Python", "Playwright", "Groq", "Docker"],
+    github:   "https://github.com/khushpal-cipher/GeM-Government-e-Marketplace-",
+  },
+  {
+    id: "00c",
+    title: "PassportPath",
+    desc:  "AI-first rebuild of the Passport Seva portal: Gemini Vision pre-checks documents, a multilingual chat fills the form, and SLA breaches auto-draft a grievance. Build What Moves India Hackathon.",
+    category: ["Full-Stack", "ML/AI"],
+    tech:     ["Next.js", "MongoDB", "Clerk", "Gemini"],
+    github:   "https://github.com/khushpal-cipher/Build-What-Moves-India-Hackathon",
+  },
+  {
+    id: "00d",
+    title: "Jan Ganana 2027",
+    desc:  "Digital Census 2027 platform: self-enumeration simulator, state schedules, demographic charts and a Gemini fact-checking assistant in 22 languages. Google Prompt Wars.",
+    category: ["Full-Stack", "ML/AI"],
+    tech:     ["Next.js", "TypeScript", "Gemini", "Recharts"],
+    github:   "https://github.com/khushpal-cipher/Prompt-Wars-ADYPU-by-Google-Developer-Groups",
+  },
+  {
     id: "01",
     title: "Crash Detection System",
     desc:  "Real-time crash detection pipeline. MobileNetV2 extracts features, LSTM reads sequences across 10 frames. 99.98% crash confidence on real dashcam footage.",
     category: ["ML/AI"],
     tech:     ["Python", "TensorFlow", "YOLOv8", "OpenCV", "LSTM"],
     github:   "https://github.com/khushpal-cipher/crash-detection-system",
-    featured: true,
   },
   {
     id: "02",
@@ -27,7 +59,7 @@ const projects = [
     desc:  "Browser-based weather application that fetches and displays real-time conditions using a public weather API. Built with vanilla JavaScript.",
     category: ["Frontend"],
     tech:     ["JavaScript", "HTML", "CSS", "API"],
-    github:   "https://github.com/khushpal-cipher/Project",
+    github:   "https://github.com/khushpal-cipher/Weather-app",
   },
 ];
 
