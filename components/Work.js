@@ -74,29 +74,30 @@ export default function Work() {
       : projects.filter((p) => p.category.includes(active));
 
   return (
-    <section id="work" className="min-h-screen snap-start snap-always w-full scroll-mt-14 py-6 px-4 md:px-8 pt-20 flex flex-col">
-      <div className="max-w-7xl mx-auto flex-1">
+    <section id="work" className="w-full scroll-mt-16 px-4 md:px-8 py-16 md:py-24 flex flex-col">
+      <div data-reveal-group className="max-w-7xl mx-auto flex-1 w-full">
 
         {/* Header + filters */}
-        <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-3 mb-4 pb-3 border-b border-[#1a1a1a]/15">
+        <div data-reveal className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 pb-4 border-b border-[#111111]/15">
           <h2
-            className="font-black text-[#1a1a1a] tracking-tight"
-            style={{ fontSize: "clamp(26px, 3.8vw, 46px)" }}
+            className="font-display font-black text-[#111111] tracking-[-0.03em]"
+            style={{ fontSize: "clamp(34px, 4.5vw, 64px)" }}
           >
             Work{" "}
-            <span className="font-light text-[#1a1a1a]/35">/ Projects</span>
+            <span className="font-semibold text-[#111111]/40">/ Projects</span>
           </h2>
 
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 flex-wrap" role="group" aria-label="Filter projects">
             {FILTERS.map((f) => (
               <button
                 key={f}
                 onClick={() => setActive(f)}
-                className={`cursor-pointer rounded-full px-4 py-1.5 text-[10px] font-black uppercase
-                            tracking-widest border transition-colors duration-100
+                aria-pressed={active === f}
+                className={`cursor-pointer rounded-full px-5 min-h-11 text-[13px] font-bold uppercase
+                            tracking-widest border transition-[background-color,color,border-color,transform] duration-150 active:scale-95
                   ${active === f
                     ? "bg-[#1a1aff] text-white border-[#1a1aff]"
-                    : "bg-transparent text-[#1a1a1a]/50 border-[#1a1a1a]/25 hover:bg-[#1a1aff] hover:text-white hover:border-[#1a1aff]"
+                    : "bg-transparent text-[#111111]/50 border-[#111111]/25 hover:bg-[#1a1aff] hover:text-white hover:border-[#1a1aff]"
                   }`}
               >
                 {f}
@@ -110,19 +111,20 @@ export default function Work() {
           {filtered.map((p, idx) => (
             <li
               key={p.id}
-              className="group flex gap-6 py-7 border-b border-[#1a1a1a]/10 last:border-b-0"
+              data-reveal
+              className="group flex gap-4 md:gap-6 py-7 border-b border-[#111111]/10 last:border-b-0"
             >
               {/* Large number */}
               <span
-                className="font-black text-[#1a1a1a]/15 leading-none shrink-0 select-none
-                           group-hover:text-[#1a1aff] transition-colors duration-150"
+                className="font-display font-black text-[#111111]/20 leading-none shrink-0 select-none
+                           group-hover:text-[#1a1aff] transition-colors duration-200"
                 style={{ fontSize: "clamp(36px, 4.5vw, 60px)", lineHeight: 1.05 }}
               >
                 {idx + 1}.
               </span>
 
               {/* Content */}
-              <div className="flex flex-col gap-3 pt-1 flex-1">
+              <div className="flex flex-col gap-3 pt-1 flex-1 min-w-0 md:group-hover:translate-x-2 transition-transform duration-300">
 
                 {/* Title — underlined, links to GitHub */}
                 <div className="flex flex-wrap items-center gap-3">
@@ -130,7 +132,7 @@ export default function Work() {
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-black text-[#1a1a1a] underline underline-offset-4 decoration-[#1a1a1a]/25
+                    className="font-display font-extrabold text-[#111111] underline underline-offset-4 decoration-[#111111]/25
                                hover:text-[#1a1aff] hover:decoration-[#1a1aff] transition-colors duration-100"
                     style={{ fontSize: "clamp(17px, 2vw, 26px)" }}
                   >
@@ -138,14 +140,14 @@ export default function Work() {
                   </a>
                   {p.featured && (
                     <span className="inline-flex items-center rounded-full bg-[#1a1aff] text-white
-                                     text-[10px] font-bold uppercase tracking-wide px-3 py-1">
+                                     text-[13px] font-bold uppercase tracking-wide px-3 py-1">
                       Featured
                     </span>
                   )}
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-[#1a1a1a]/50 leading-relaxed max-w-2xl">
+                <p className="text-base text-[#111111]/80 leading-relaxed max-w-[65ch]">
                   {p.desc}
                 </p>
 
@@ -155,7 +157,7 @@ export default function Work() {
                     <span
                       key={t}
                       className="inline-flex items-center rounded-full bg-[#1a1aff] text-white
-                                 text-[10px] font-bold uppercase tracking-wide px-4 py-1"
+                                 text-[13px] font-bold uppercase tracking-wide px-3 py-1"
                     >
                       {t}
                     </span>
@@ -163,8 +165,8 @@ export default function Work() {
                   {p.category.map((c) => (
                     <span
                       key={c}
-                      className="inline-flex items-center rounded-full bg-transparent text-[#1a1a1a]
-                                 border border-[#1a1a1a]/25 text-[10px] font-bold uppercase
+                      className="inline-flex items-center rounded-full bg-transparent text-[#111111]
+                                 border border-[#111111]/25 text-[13px] font-bold uppercase
                                  tracking-wide px-4 py-1"
                     >
                       {c}
@@ -179,15 +181,19 @@ export default function Work() {
                 href={p.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex shrink-0 self-start pt-2
-                           text-[11px] font-black uppercase tracking-wider
-                           text-[#1a1a1a]/30 hover:text-[#1a1aff] transition-colors duration-100"
+                aria-label={`${p.title} on GitHub`}
+                className="hidden md:flex shrink-0 self-start items-center min-h-11 px-2
+                           text-[13px] font-bold uppercase tracking-wider
+                           text-[#111111]/60 hover:text-[#1a1aff] transition-colors duration-150"
               >
                 GitHub ↗
               </a>
             </li>
           ))}
         </ol>
+        {filtered.length === 0 && (
+          <p className="py-10 text-base text-[#111111]/70">No projects in this category yet.</p>
+        )}
 
       </div>
       <Footer />

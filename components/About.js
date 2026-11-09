@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 /* ── Inline SVG icons ── */
 function MailIcon({ className }) {
@@ -37,17 +38,19 @@ function GitHubIcon({ className }) {
 /* ── main ── */
 export default function About() {
   return (
-    <section id="about" className="min-h-screen snap-start snap-always w-full scroll-mt-14 py-6 px-4 md:px-8 pt-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <section id="about" className="w-full scroll-mt-16 px-4 md:px-8 py-16 md:py-24">
+      <div data-reveal-group className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
 
         {/* LEFT — dark card */}
-        <div className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
-                        relative overflow-hidden flex flex-col justify-between min-h-175">
+        <div data-reveal className="rounded-4xl bg-[#111111]
+                        relative overflow-hidden flex flex-col justify-between min-h-130 lg:min-h-175">
           {/* Background portrait */}
-          <img
+          <Image
             src="/portrait.png"
-            alt="Portrait"
-            className="absolute inset-0 w-full h-full object-cover z-0 opacity-60"
+            alt="Black-and-white portrait of Khushpal Singh Chouhan"
+            fill
+            sizes="(min-width: 1024px) 33vw, 100vw"
+            className="object-cover z-0 opacity-60"
           />
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-linear-to-b from-black/70 via-transparent to-black/90 z-10"></div>
@@ -55,23 +58,23 @@ export default function About() {
           {/* Foreground content */}
           <div className="relative z-20 flex flex-col justify-between h-full p-8">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60 mb-6">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-white/75 mb-6">
                 Hello, My name is
               </p>
               <h2
-                className="font-black text-white leading-[0.92] tracking-tight"
-                style={{ fontSize: "clamp(26px, 3.2vw, 44px)" }}
+                className="font-display font-black text-white leading-[0.95] tracking-[-0.03em]"
+                style={{ fontSize: "clamp(30px, 3vw, 44px)" }}
               >
                 KHUSHPAL<br />SINGH<br />CHOUHAN.
               </h2>
             </div>
 
             <div className="flex flex-col gap-4 mt-6">
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-base text-white/85 leading-relaxed">
                 CS undergrad at Ajeenkya DY Patil University, Pune — specialising in AI.
                 I build computer vision pipelines, AI-backed APIs, and full-stack apps.
               </p>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-base text-white/85 leading-relaxed">
                 Looking for an internship where I can stop building alone.
               </p>
               <span className="pill self-start">Open to Intern</span>
@@ -83,40 +86,43 @@ export default function About() {
         <div className="lg:col-span-2 flex flex-col gap-4">
 
           {/* Introduction card — text + portrait side-by-side */}
-          <div className="rounded-4xl border border-[#1a1a1a]/20 bg-white p-8 flex-1">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1a1a1a]/30 mb-4">
+          <div data-reveal className="rounded-4xl bg-white p-6 md:p-8 flex-1">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#111111]/60 mb-4">
               Introduction
             </p>
-            <div className="flex gap-6 items-start">
+            <div className="flex flex-col-reverse sm:flex-row gap-6 items-start">
               <p
-                className="font-black text-[#1a1a1a] leading-[1.05] tracking-tight flex-1"
-                style={{ fontSize: "clamp(19px, 2.5vw, 34px)" }}
+                className="font-black text-[#111111] leading-[1.05] tracking-tight flex-1"
+                style={{ fontSize: "clamp(20px, 2.2vw, 30px)" }}
               >
-                I don&apos;t have a job title yet — but I do have a crash
-                detection system that identifies rear-end collisions at
-                99.98% confidence, running at 13 fps on a CPU.
+                No job title yet. Just a crash detector that catches
+                rear-end collisions at 99.98% confidence, at 13 fps on a CPU.
               </p>
-              <img
+              <Image
                 src="/avatar.png"
-                alt="Person Portrait"
-                className="w-[30%] h-auto object-cover rounded-3xl shrink-0"
+                alt="Illustration of Khushpal working on a laptop"
+                width={2240}
+                height={1912}
+                sizes="(min-width: 640px) 20vw, 50vw"
+                className="w-1/2 sm:w-[30%] h-auto object-cover rounded-3xl shrink-0"
               />
             </div>
           </div>
 
           {/* Get In Touch */}
-          <div>
-            <p className="text-[42px] font-black uppercase tracking-tight text-[#1a1a1a] leading-none mb-3 px-1">
+          <div data-reveal>
+            <h3 className="font-display text-3xl md:text-[42px] font-black uppercase tracking-[-0.02em] text-[#111111] leading-none mb-4 px-1">
               Get In Touch
-            </p>
+            </h3>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
               {/* Card 1 — Email (solid black) */}
               <a
                 href="mailto:khushalsinghchouhan4@gmail.com"
-                className="rounded-4xl border border-[#1a1a1a]/20 bg-[#1a1a1a]
-                           flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
+                className="rounded-4xl bg-[#111111]
+                           flex flex-col justify-between p-5 min-h-36 sm:aspect-square group relative overflow-hidden
+                           hover:-translate-y-1 active:translate-y-0 transition-transform duration-200"
               >
                 {/* Faded envelope background */}
                 <svg
@@ -128,7 +134,7 @@ export default function About() {
                 <MailIcon className="w-6 h-6 text-white relative z-10" />
                 <div className="relative z-10">
                   <div className="border-t border-white/20 mb-3" />
-                  <p className="text-[11px] font-bold text-white/60 leading-snug break-all
+                  <p className="text-sm font-bold text-white/80 leading-snug break-all
                                 group-hover:text-white transition-colors duration-100">
                     khushalsinghchouhan4<br />@gmail.com
                   </p>
@@ -141,7 +147,8 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-4xl border border-[#1a1aff] bg-[#1a1aff]
-                           flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
+                           flex flex-col justify-between p-5 min-h-36 sm:aspect-square group relative overflow-hidden
+                           hover:-translate-y-1 active:translate-y-0 transition-transform duration-200"
               >
                 {/* Faded 'in' LinkedIn watermark */}
                 <span className="absolute inset-0 flex items-center justify-center
@@ -152,7 +159,7 @@ export default function About() {
                 <LinkedInIcon className="w-6 h-6 text-white relative z-10" />
                 <div className="relative z-10">
                   <div className="border-t border-white/20 mb-3" />
-                  <p className="text-[11px] font-bold text-white/60 leading-snug
+                  <p className="text-sm font-bold text-white/80 leading-snug
                                 group-hover:text-white transition-colors duration-100">
                     khushpal-singh-<br />chouhan
                   </p>
@@ -164,21 +171,22 @@ export default function About() {
                 href="https://github.com/khushpal-cipher"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-4xl border border-[#1a1a1a]/20 bg-white
-                           flex flex-col justify-between p-5 aspect-square group relative overflow-hidden"
+                className="rounded-4xl bg-white
+                           flex flex-col justify-between p-5 min-h-36 sm:aspect-square group relative overflow-hidden
+                           hover:-translate-y-1 active:translate-y-0 transition-transform duration-200"
               >
                 {/* Faded Octocat background */}
                 <svg
-                  className="absolute inset-0 w-full h-full p-4 text-[#1a1a1a]/10 pointer-events-none"
+                  className="absolute inset-0 w-full h-full p-4 text-[#111111]/10 pointer-events-none"
                   viewBox="0 0 24 24" fill="currentColor"
                 >
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
                 </svg>
-                <GitHubIcon className="w-6 h-6 text-[#1a1a1a] relative z-10" />
+                <GitHubIcon className="w-6 h-6 text-[#111111] relative z-10" />
                 <div className="relative z-10">
-                  <div className="border-t border-[#1a1a1a]/15 mb-3" />
-                  <p className="text-[11px] font-bold text-[#1a1a1a]/50 leading-snug
-                                group-hover:text-[#1a1a1a] transition-colors duration-100">
+                  <div className="border-t border-[#111111]/15 mb-3" />
+                  <p className="text-sm font-bold text-[#111111]/70 leading-snug
+                                group-hover:text-[#111111] transition-colors duration-100">
                     khushpal-<br />cipher
                   </p>
                 </div>

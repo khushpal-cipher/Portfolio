@@ -1,5 +1,3 @@
-"use client";
-
 const HASHTAGS = [
   "COMPUTER_VISION",
   "DEEP_LEARNING",
@@ -8,198 +6,145 @@ const HASHTAGS = [
   "OPEN_TO_INTERN",
 ];
 
-const PORTFOLIO_ROWS = ["POR", "TFO", "LIO"];
+/* Each letter lands at its own angle, like blocks tipped onto a table */
+const PORTFOLIO_ROWS = [
+  [["P", -6, 0], ["O", 8, -4], ["R", -3, 2]],
+  [["T", 10, 0], ["F", -8, 6], ["O", 4, -2]],
+  [["L", -12, 2], ["I", 6, -4], ["O", -4, 0]],
+];
 
-/* KSC and Hire Me are fixed globally in PageController — Hero owns only the bento layout */
+/* Hollow shapes; data-depth = how far each drifts with the pointer (px) */
+const SHAPES = [
+  { cls: "-top-14 -right-14 w-[300px] opacity-[0.13]", d: 30, svg: <circle cx="150" cy="150" r="136" strokeWidth="22" />, vb: 300 },
+  { cls: "top-[28%] -left-16 w-[200px] opacity-[0.10]", d: -20, svg: <circle cx="100" cy="100" r="88" strokeWidth="16" />, vb: 200 },
+  { cls: "top-8 left-8 w-[180px] opacity-[0.15]", d: 40, svg: <circle cx="90" cy="90" r="78" strokeWidth="18" />, vb: 180 },
+  { cls: "top-12 left-[38%] w-[110px] opacity-[0.10] rotate-45", d: -35, svg: <rect x="8" y="8" width="94" height="94" strokeWidth="13" />, vb: 110 },
+  { cls: "top-[48%] left-[18%] w-[90px] opacity-[0.10] rotate-[22deg]", d: 25, svg: <rect x="6" y="6" width="78" height="78" strokeWidth="12" />, vb: 90 },
+  { cls: "top-[14%] left-[56%] w-[70px] opacity-[0.11]", d: -50, svg: <circle cx="35" cy="35" r="28" strokeWidth="11" />, vb: 70 },
+];
+
 export default function Hero() {
   return (
-    <section id="home" className="h-screen snap-start snap-always w-full overflow-hidden relative bg-[#F5F5F0]">
+    <section id="home" className="min-h-svh flex flex-col px-4 md:px-8 pt-20 pb-4">
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-4 lg:gap-6">
 
-      {/* pt-16 clears the globally-fixed KSC / Hire Me labels */}
-      <div className="h-full px-4 md:px-6 pt-16 pb-20 grid grid-cols-1 md:grid-cols-2 gap-4">
-
-        {/* ── LEFT COLUMN ─────────────────────────────────── */}
-        <div className="rounded-4xl border border-[#1a1a1a]/20 bg-white
-                        flex flex-col p-8 md:p-10 overflow-hidden">
-
-          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#1a1a1a]/25">
-            Portfolio / 2026
-          </p>
-
-          {/* Arrow — pushed to bottom-right, just above the hashtags */}
-          <div className="flex-1 flex items-end justify-end pb-3 pointer-events-none">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="square"
-              strokeLinejoin="miter"
-              className="w-48 h-48 text-black"
+        {/* ── LEFT: who + arrow + tags ── */}
+        <div className="order-2 lg:order-1 flex flex-col justify-between gap-10 lg:py-4">
+          <div>
+            <h1
+              data-hero-in
+              className="font-display font-black text-ink leading-[0.95] tracking-[-0.03em]
+                         text-[clamp(36px,8vw,60px)] lg:text-[clamp(30px,3.1vw,48px)]"
             >
-              <path d="M5 5l14 14M10 19h9v-9" />
-            </svg>
+              Khushpal Singh Chouhan
+            </h1>
+            <p data-hero-in className="mt-5 text-lg leading-snug text-ink/80 max-w-[34ch]">
+              AI and full-stack developer. CS undergrad in Pune, building computer vision and AI-backed apps.
+            </p>
           </div>
 
-          {/* Hashtags — right-aligned, bold '#' + light body, lined-paper borders */}
-          <ul className="flex flex-col">
-            {HASHTAGS.map((tag) => (
-              <li key={tag} className="w-full text-right border-b border-[#1a1a1a]/20 py-2.5">
-                <span className="text-[16px] font-bold text-[#1a1a1a]">#</span>
-                <span className="text-[16px] font-light text-[#1a1a1a] tracking-tight">
-                  {tag}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-col">
+            <div className="flex justify-end pb-4">
+              <svg
+                data-follow-arrow
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="square"
+                strokeLinejoin="miter"
+                className="w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 text-ink"
+                aria-hidden="true"
+              >
+                <path d="M5 5l14 14M10 19h9v-9" />
+              </svg>
+            </div>
+            <ul aria-label="Focus areas">
+              {HASHTAGS.map((tag) => (
+                <li key={tag} className="hero-tag text-right border-b border-ink/20 py-2.5">
+                  <span className="text-lg font-bold text-ink">#</span>
+                  <span className="text-lg font-light text-ink tracking-tight">{tag}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* ── RIGHT COLUMN: giant blue box ───────────────── */}
-        <div className="rounded-4xl bg-[#1a1aff] relative overflow-hidden
-                        flex flex-col justify-between p-8 md:p-10">
+        {/* ── RIGHT: the blue panel ── */}
+        <div
+          data-hero-panel
+          className="order-1 lg:order-2 rounded-4xl bg-accent relative overflow-hidden h-[64svh] min-h-[420px] lg:h-auto lg:min-h-[520px]"
+          style={{ containerType: "size" }}
+        >
+          {SHAPES.map((s, i) => (
+            <div key={i} data-depth={s.d} className={`absolute pointer-events-none ${s.cls}`} aria-hidden="true">
+              <svg viewBox={`0 0 ${s.vb} ${s.vb}`} fill="none" stroke="white" className="w-full h-auto">{s.svg}</svg>
+            </div>
+          ))}
 
-          {/* ── Geometric background texture ─────────────── */}
-          {/* Large hollow circle — bleeds off the top-right corner */}
-          <svg
-            className="absolute -top-14 -right-14 opacity-[0.13] pointer-events-none"
-            width="300" height="300" viewBox="0 0 300 300" fill="none"
+          <span
+            data-hero-in
+            className="absolute top-5 right-5 lg:top-8 lg:right-8 z-10 inline-flex items-center gap-2 rounded-full
+                       text-[13px] font-bold uppercase tracking-widest px-4 py-2 bg-white/15 text-white"
           >
-            <circle cx="150" cy="150" r="136" stroke="white" strokeWidth="22" />
-          </svg>
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" aria-hidden="true" />
+            Available
+          </span>
 
-          {/* Medium hollow circle — bleeds off the left edge, mid-height */}
-          <svg
-            className="absolute top-[28%] -left-16 opacity-[0.10] pointer-events-none"
-            width="200" height="200" viewBox="0 0 200 200" fill="none"
-          >
-            <circle cx="100" cy="100" r="88" stroke="white" strokeWidth="16" />
-          </svg>
+          <p className="sr-only">Portfolio 2026</p>
 
-          {/* Open triangle — center-right, tilted */}
-          <svg
-            className="absolute top-[18%] right-[12%] opacity-[0.09] pointer-events-none"
-            style={{ transform: "rotate(12deg)" }}
-            width="170" height="150" viewBox="0 0 170 150" fill="none"
-          >
-            <polygon points="85,8 162,142 8,142" stroke="white" strokeWidth="14" fill="none" />
-          </svg>
-
-          {/* Thick diagonal slash — lower-left region */}
-          <svg
-            className="absolute bottom-[22%] left-[8%] opacity-[0.11] pointer-events-none"
-            style={{ transform: "rotate(-20deg)" }}
-            width="140" height="20" viewBox="0 0 140 20" fill="none"
-          >
-            <line x1="0" y1="10" x2="140" y2="10" stroke="white" strokeWidth="14" strokeLinecap="square" />
-          </svg>
-
-          {/* Small hollow square — mid-left, rotated */}
-          <svg
-            className="absolute top-[48%] left-[18%] opacity-[0.10] pointer-events-none"
-            style={{ transform: "rotate(22deg)" }}
-            width="90" height="90" viewBox="0 0 90 90" fill="none"
-          >
-            <rect x="6" y="6" width="78" height="78" stroke="white" strokeWidth="12" fill="none" />
-          </svg>
-
-          {/* Large hollow circle — fills the empty top-left corner */}
-          <svg
-            className="absolute top-8 left-8 opacity-[0.15] pointer-events-none"
-            width="180" height="180" viewBox="0 0 180 180" fill="none"
-          >
-            <circle cx="90" cy="90" r="78" stroke="white" strokeWidth="18" />
-          </svg>
-
-          {/* Rotated hollow square (diamond) — top-center void */}
-          <svg
-            className="absolute top-12 left-[38%] opacity-[0.10] pointer-events-none"
-            style={{ transform: "rotate(45deg)" }}
-            width="110" height="110" viewBox="0 0 110 110" fill="none"
-          >
-            <rect x="8" y="8" width="94" height="94" stroke="white" strokeWidth="13" fill="none" />
-          </svg>
-
-          {/* Small hollow circle — upper-center-right gap filler */}
-          <svg
-            className="absolute top-[14%] left-[52%] opacity-[0.11] pointer-events-none"
-            width="70" height="70" viewBox="0 0 70 70" fill="none"
-          >
-            <circle cx="35" cy="35" r="28" stroke="white" strokeWidth="11" />
-          </svg>
-
-          {/* Tiny hollow square — plugs the remaining upper-right interior gap */}
-          <svg
-            className="absolute top-6 left-[62%] opacity-[0.09] pointer-events-none"
-            style={{ transform: "rotate(18deg)" }}
-            width="52" height="52" viewBox="0 0 52 52" fill="none"
-          >
-            <rect x="5" y="5" width="42" height="42" stroke="white" strokeWidth="9" fill="none" />
-          </svg>
-
-          {/* Availability badge — top-right, above decorations */}
-          <div className="relative z-10 flex items-start justify-end">
-            <span className="rounded-full text-[10px] font-black uppercase tracking-widest
-                             px-3 py-1.5 bg-white/15 text-white border border-white/25">
-              Available
-            </span>
-          </div>
-
-          {/* PORTFOLIO — anchored bottom-right, chaotic overlapping letters */}
+          {/* PORTFOLIO — sized from the panel, never from the screen */}
           <div
-            className="absolute bottom-0 right-4 pointer-events-none select-none"
-            style={{
-              transform: "rotate(-15deg)",
-              lineHeight: 0.75,
-              letterSpacing: "-0.06em",
-            }}
+            data-hero-letters
+            aria-hidden="true"
+            className="absolute bottom-[7%] lg:bottom-[3%] right-[4%] select-none font-display font-black text-white origin-bottom-right
+                       text-[min(25cqw,22cqh)] lg:text-[min(16cqw,24cqh)]"
+            style={{ lineHeight: 0.84, transform: "rotate(-12deg)" }}
           >
-            {PORTFOLIO_ROWS.map((chunk, rowIdx) => (
-              <div key={rowIdx} className="flex">
-                {chunk.split("").map((letter, j) => (
+            {PORTFOLIO_ROWS.map((row, r) => (
+              <div key={r} className="flex">
+                {row.map(([ch, rot, y], j) => (
                   <span
-                    key={`${rowIdx}-${j}`}
-                    className="font-black text-white"
-                    style={{ fontSize: "clamp(96px, 12vw, 160px)" }}
+                    key={j}
+                    className="hero-letter inline-block"
+                    style={{ transform: `rotate(${rot}deg) translateY(${y}%)` }}
                   >
-                    {letter}
+                    {ch}
                   </span>
                 ))}
               </div>
             ))}
           </div>
 
-          {/* 2026 + thick dash — pinned bottom-left */}
-          <div className="absolute bottom-8 left-8 z-10 flex items-end gap-4">
+          {/* 2026 — bottom-left */}
+          <div data-hero-in className="absolute top-5 left-5 lg:top-auto lg:bottom-8 lg:left-8 z-10 flex items-end gap-3" aria-hidden="true">
             <span
-              className="font-black text-white leading-none"
-              style={{
-                fontSize: "clamp(38px, 5vw, 72px)",
-                letterSpacing: "-0.05em",
-                opacity: 0.92,
-              }}
+              className="font-display font-black text-white leading-none tracking-[-0.04em]"
+              style={{ fontSize: "min(9cqw, 12cqh)" }}
             >
               2026
             </span>
-            <div className="h-5 w-50 bg-white opacity-90 mb-4" />
+            <span className="h-[1.6cqh] w-[12cqw] bg-white mb-[1.4cqh]" />
           </div>
         </div>
-
       </div>
 
-      {/* See More — anchored absolute bottom-right */}
-      <a
-        href="#about"
-        className="absolute bottom-8 right-8 flex items-center gap-3
-                   text-[13px] font-black uppercase tracking-[0.22em] text-[#1a1a1a]/55
-                   hover:text-[#1a1a1a] transition-colors duration-100"
-      >
-        <span>See More</span>
-        <span className="w-10 h-10 rounded-full border border-current
-                          flex items-center justify-center text-lg leading-none">
-          ↓
-        </span>
-      </a>
-
+      {/* See More */}
+      <div className="flex justify-end pt-4">
+        <a
+          href="#about"
+          data-magnetic
+          className="group flex items-center gap-3 min-h-11 text-sm font-bold uppercase tracking-[0.2em] text-ink/70
+                     hover:text-ink transition-colors duration-150"
+        >
+          <span>See More</span>
+          <span className="w-11 h-11 rounded-full border border-current flex items-center justify-center text-lg
+                           group-hover:bg-accent group-hover:border-accent group-hover:text-white
+                           transition-colors duration-150">
+            <span className="group-hover:animate-bounce" aria-hidden="true">↓</span>
+          </span>
+        </a>
+      </div>
     </section>
   );
 }

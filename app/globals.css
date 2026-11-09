@@ -2,57 +2,67 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-unbounded);
+  --color-ground: #F2F2EE;
+  --color-ink: #111111;
+  --color-accent: #1A1AFF;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Lenis drives smooth scrolling; native smooth scroll would fight it */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
 
 body {
-  background: #F5F5F0;
-  color: #1a1a1a;
+  background: #F2F2EE;
+  color: #111111;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-/* ── Solid blue pill (default) ── */
+::selection { background: #1A1AFF; color: #fff; }
+
+:focus-visible {
+  outline: 3px solid #1A1AFF;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Solid blue pill ── */
 .pill {
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
-  padding: 3px 14px;
-  font-size: 10px;
+  padding: 4px 14px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: #1a1aff;
+  letter-spacing: 0.06em;
+  background: #1A1AFF;
   color: #fff;
   white-space: nowrap;
-  line-height: 1.7;
-  cursor: default;
+  line-height: 1.6;
 }
 
-/* ── Ghost pill ── */
-.pill-ghost {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 9999px;
-  padding: 3px 14px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: transparent;
-  color: #1a1a1a;
-  border: 1.5px solid rgba(26, 26, 26, 0.25);
-  white-space: nowrap;
-  line-height: 1.7;
-  cursor: default;
+/* Custom cursor: only for mouse users */
+.cursor-dot { display: none; }
+@media (pointer: fine) {
+  .cursor-dot {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    width: 14px; height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 9999px;
+    background: #1A1AFF;
+    pointer-events: none;
+    z-index: 200;
+    mix-blend-mode: multiply;
+    transition: width 200ms ease, height 200ms ease, margin 200ms ease, opacity 200ms ease;
+  }
+  .cursor-dot.is-hover { width: 48px; height: 48px; margin: -24px 0 0 -24px; opacity: 0.35; }
 }
 
-/* ── Entry animation ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot { display: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
-
-.fade-up { animation: fadeUp 300ms ease forwards; }
