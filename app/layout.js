@@ -1,4 +1,5 @@
-import { Geist, Unbounded } from "next/font/google";
+import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geist = Geist({
@@ -7,10 +8,11 @@ const geist = Geist({
   weight: ["400", "500", "600", "700", "900"],
 });
 
-const unbounded = Unbounded({
+// Self-hosted: Vercel's Turbopack build failed fetching Unbounded from Google Fonts (OFL licence).
+const unbounded = localFont({
+  src: "./fonts/unbounded-latin.woff2",
   variable: "--font-unbounded",
-  subsets: ["latin"],
-  weight: ["600", "800", "900"],
+  weight: "200 900",
 });
 
 export const metadata = {
