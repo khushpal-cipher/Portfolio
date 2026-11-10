@@ -51,7 +51,7 @@ export default function Hero() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="3"
-                strokeLinecap="square"
+                // strokeLinecap="square"
                 strokeLinejoin="miter"
                 className="w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 text-ink"
                 aria-hidden="true"
